@@ -35,14 +35,14 @@ stringListStack_init(S_stringListStack **sls_p)
 	}
 
 #ifndef STRINGLISTSTACK_ASSUME_SPACE
-	sls->endIndex = BASE_SIZE-1;
+	sls->endIndex = STRINGLISTSTACK_BASE_SIZE-1;
 	sls->size = 1;
 #endif
 	sls->scopeIndex = 0;
 	sls->indexStack =
 	STRINGLISTSTACK_MALLOC(sizeof(u32)*STRINGLISTSTACK_SCOPE_STACK_SIZE*2);
 	sls->stringCountStack = sls->indexStack + STRINGLISTSTACK_SCOPE_STACK_SIZE;
-	sls->table = STRINGLISTSTACK_CALLOC(1, BASE_SIZE);
+	sls->table = STRINGLISTSTACK_CALLOC(1, STRINGLISTSTACK_BASE_SIZE);
 	
 	if(((u64)sls->indexStack&(u64)sls->stringCountStack&(u64)sls->table)==0){
 		return stringListStack_errorMallocFailed;
@@ -333,7 +333,7 @@ increaseSize(S_stringListStack *sls, u8 **table, u8 **cursor, u32 index)
 	u8 *tmp;
 	
 	sls->size++;
-	tmp = STRINGLISTSTACK_REALLOC(sls->table, sls->size*BASE_SIZE);
+	tmp=STRINGLISTSTACK_REALLOC(sls->table,sls->size*STRINGLISTSTACK_BASE_SIZE);
 	if(tmp == 0){
 		// no ability to realloc, return error keep same table
 		sls->size--;

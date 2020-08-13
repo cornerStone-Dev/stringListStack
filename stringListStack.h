@@ -25,7 +25,7 @@
 #define STRINGLISTSTACK_STATIC_BUILD
 #endif
 
-#define BASE_SIZE (4*1024)
+#define STRINGLISTSTACK_BASE_SIZE (4*1024)
 #define STRINGLISTSTACK_SCOPE_STACK_SIZE (32)
 
 /*******************************************************************************
