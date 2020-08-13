@@ -30,15 +30,15 @@ int main(void)
 		printf("stringListStack_init: %s\n",
 		stringListStack_debugString(returnCode));
 	}
-	enterScope(sls);
+	stringListStack_enterScope(sls);
 	for (s64 x=1; x<=UPPER_LIMIT; x++){
 		sprintf((char*)buff, "%ld", x);
 		if ( stringListStack_insert(sls, (u8*)buff, strlen((char*)buff), 0) ){
 			printf("Strange failure to insert %ld\n", x);
 		}
 		if((x%256)==0){
-			leaveScope(sls);
-			enterScope(sls);
+			stringListStack_leaveScope(sls);
+			stringListStack_enterScope(sls);
 		}
 	}
 	printf("ht->count is %d\n", sls->stringCountStack[sls->scopeIndex]);
@@ -61,7 +61,7 @@ int main(void)
 		printf("string is %s\n",buffp);
 	}
 	
-	leaveScope(sls);
+	stringListStack_leaveScope(sls);
 	printf("ht->count is %d\n", sls->stringCountStack[sls->scopeIndex]);
 
 	return 0;

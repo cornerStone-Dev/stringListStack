@@ -97,11 +97,11 @@ stringListStack_stringAt(
 
 STRINGLISTSTACK_STATIC_BUILD 
 void
-enterScope(S_stringListStack *sls);
+stringListStack_enterScope(S_stringListStack *sls);
 
 STRINGLISTSTACK_STATIC_BUILD
 void
-leaveScope(S_stringListStack *sls);
+stringListStack_leaveScope(S_stringListStack *sls);
 
 #ifdef STRINGLISTSTACK_DEBUG
 STRINGLISTSTACK_STATIC_BUILD

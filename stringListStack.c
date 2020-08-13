@@ -306,7 +306,7 @@ stringListStack_stringAt_internal(
 
 STRINGLISTSTACK_STATIC_BUILD 
 void
-enterScope(S_stringListStack *sls)
+stringListStack_enterScope(S_stringListStack *sls)
 {
 	u32 index = sls->scopeIndex;
 	/* copy end of previous scope to new scope */
@@ -317,7 +317,7 @@ enterScope(S_stringListStack *sls)
 
 STRINGLISTSTACK_STATIC_BUILD
 void
-leaveScope(S_stringListStack *sls)
+stringListStack_leaveScope(S_stringListStack *sls)
 {
 	sls->scopeIndex--;
 }
