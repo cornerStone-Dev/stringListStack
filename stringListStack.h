@@ -37,10 +37,10 @@ typedef struct{
 	uint32_t endIndex;
 	uint32_t size;
 #endif
-	uint32_t scopeIndex;
 	uint32_t *indexStack;
 	uint32_t *stringCountStack;
 	uint8_t  *table;
+	uint32_t scopeIndex;
 } S_stringListStack;
 
 // Main Function API error enumeration

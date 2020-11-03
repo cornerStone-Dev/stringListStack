@@ -40,11 +40,12 @@ stringListStack_init(S_stringListStack **sls_p)
 #endif
 	sls->scopeIndex = 0;
 	sls->indexStack =
-	STRINGLISTSTACK_MALLOC(sizeof(u32)*STRINGLISTSTACK_SCOPE_STACK_SIZE*2);
-	sls->stringCountStack = sls->indexStack + STRINGLISTSTACK_SCOPE_STACK_SIZE;
-	sls->table = STRINGLISTSTACK_CALLOC(1, STRINGLISTSTACK_BASE_SIZE);
+	STRINGLISTSTACK_CALLOC(1, sizeof(u32)*STRINGLISTSTACK_SCOPE_STACK_SIZE*2);
 	
-	if(((u64)sls->indexStack&(u64)sls->stringCountStack&(u64)sls->table)==0){
+	sls->stringCountStack = sls->indexStack + STRINGLISTSTACK_SCOPE_STACK_SIZE;
+	sls->table = STRINGLISTSTACK_MALLOC(STRINGLISTSTACK_BASE_SIZE);
+	
+	if( (sls->indexStack==0) || (sls->table==0) ){
 		return stringListStack_errorMallocFailed;
 	}
 	
